@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FitnessTracker</string>
+    <string name="profil">Profil</string>
+    <string name="verbrennt">Verbrennt: </string>
+    <string name="schritte">Schritte:</string>
+    <string name="loslegen">Loslegen!</string>
+</resources>
