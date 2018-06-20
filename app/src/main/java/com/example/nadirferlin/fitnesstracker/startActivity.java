@@ -18,7 +18,7 @@ public class startActivity extends AppCompatActivity {
 
         webView = (WebView) findViewById(R.id.webView);
         webView.loadUrl("file:///android_asset/sonic.html");
-        thisIntent = new Intent(this, MainActivity.class);
+        thisIntent = new Intent(this, Hauptbildschirm.class);
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
