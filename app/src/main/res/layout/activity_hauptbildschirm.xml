@@ -11,10 +11,11 @@
         android:id="@+id/loOverview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#6A996B">
 
         <Button
-            android:id="@+id/btnProfile"
+            android:id="@+id/btnProfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

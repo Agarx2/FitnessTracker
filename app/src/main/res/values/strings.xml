@@ -4,6 +4,11 @@
     <string name="verbrennt">Verbrennt: </string>
     <string name="schritte">Schritte:</string>
     <string name="loslegen">Loslegen!</string>
+
+    <string-array name="array_Geschlecht">
+        <item>Männlich</item>
+        <item>Weiblich</item>
+    </string-array>
     <string name="title_activity_hauptbildschirm">Map</string>
     <string name="title_activity_test">Map</string>
 </resources>
