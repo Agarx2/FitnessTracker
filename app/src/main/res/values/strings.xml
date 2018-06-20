@@ -4,4 +4,6 @@
     <string name="verbrennt">Verbrennt: </string>
     <string name="schritte">Schritte:</string>
     <string name="loslegen">Loslegen!</string>
+    <string name="title_activity_hauptbildschirm">Map</string>
+    <string name="title_activity_test">Map</string>
 </resources>
