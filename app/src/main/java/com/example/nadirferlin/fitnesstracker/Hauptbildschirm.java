@@ -3,6 +3,7 @@ package com.example.nadirferlin.fitnesstracker;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -26,6 +27,40 @@ public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallb
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        final Button btnProfile = (Button) findViewById(R.id.btnProfil);
+
+        btnProfile.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    btnProfile.setBackgroundColor(getResources().getColor(R.color.sonicBackgroundShadow));
+                    openActivityProfile(btnProfile);
+                    return true;
+                } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    btnProfile.setBackgroundColor(getResources().getColor(R.color.sonicBackgroundColor));
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        final Button btnGo = (Button) findViewById(R.id.btnGo);
+
+        btnGo.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    btnGo.setBackgroundColor(getResources().getColor(R.color.sonicBackgroundShadow));
+                    //
+                    return true;
+                } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    btnGo.setBackgroundColor(getResources().getColor(R.color.sonicBackgroundColor));
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     public void openActivityProfile(View v){

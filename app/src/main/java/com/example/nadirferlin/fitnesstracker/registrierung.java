@@ -24,7 +24,7 @@ public class registrierung extends AppCompatActivity {
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if(motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     btnSignUp.setBackgroundColor(getResources().getColor(R.color.sonicBackgroundShadow));
-                    signUp((Button) findViewById(R.id.btnSignUp));
+                    signUp(btnSignUp);
                     return true;
                 } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                     btnSignUp.setBackgroundColor(getResources().getColor(R.color.sonicBackgroundColor));
