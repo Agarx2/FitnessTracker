@@ -5,6 +5,9 @@
     <string name="schritte">Schritte:</string>
     <string name="loslegen">Loslegen!</string>
 
+    <string name="registrierung">Registrierung</string>
+    <string name="registrieren">Registrieren</string>
+
     <string-array name="array_Geschlecht">
         <item>Männlich</item>
         <item>Weiblich</item>
