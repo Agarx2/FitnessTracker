@@ -15,10 +15,12 @@
         <TextView
             android:id="@+id/tvProfil"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="90dp"
             android:layout_weight="1"
+            android:background="@color/sonicBackgroundColor"
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/registrierung"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
             android:textSize="36sp"
             android:textStyle="bold" />
 
@@ -43,7 +45,8 @@
                 android:layout_width="112dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Name:" />
+                android:text="@string/name"
+                android:textColor="@color/sonicBackgroundColor" />
 
             <EditText
                 android:id="@+id/etName"
@@ -70,7 +73,8 @@
                 android:layout_width="112dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Alter" />
+                android:text="@string/alter"
+                android:textColor="@color/sonicBackgroundColor" />
 
             <EditText
                 android:id="@+id/etAlter"
@@ -100,7 +104,8 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="Geschlecht" />
+                android:text="@string/geschlecht"
+                android:textColor="@color/sonicBackgroundColor" />
 
             <Spinner
                 android:id="@+id/spinnerGeschlecht"
@@ -129,7 +134,8 @@
                 android:layout_width="112dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Gewicht" />
+                android:text="@string/gewicht"
+                android:textColor="@color/sonicBackgroundColor" />
 
             <EditText
                 android:id="@+id/etGewicht"
@@ -156,7 +162,8 @@
                 android:layout_width="112dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Tätigkeit" />
+                android:text="@string/tätigkeit"
+                android:textColor="@color/sonicBackgroundColor" />
 
             <EditText
                 android:id="@+id/etTaetigkeit"
@@ -171,7 +178,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="68dp"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
@@ -183,7 +190,8 @@
                 android:layout_width="112dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Aktivität" />
+                android:text="@string/sportlicheAktivität"
+                android:textColor="@color/sonicBackgroundColor" />
 
             <EditText
                 android:id="@+id/etAktivitaet"
@@ -207,8 +215,12 @@
             android:id="@+id/btnSignUp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/sonicBackgroundColor"
             android:onClick="signUp"
-            android:text="@string/registrieren" />
+            android:shadowColor="@color/sonicBackgroundShadow"
+            android:text="@string/registrieren"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 

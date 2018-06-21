@@ -8,6 +8,13 @@
     <string name="registrierung">Registrierung</string>
     <string name="registrieren">Registrieren</string>
 
+    <string name="name">Name:</string>
+    <string name="alter">Alter:</string>
+    <string name="geschlecht">Geschlecht:</string>
+    <string name="gewicht">Gewicht:</string>
+    <string name="tätigkeit">Tätigkeit:</string>
+    <string name="sportlicheAktivität">Sportliche\nAktivität:</string>
+
     <string-array name="array_Geschlecht">
         <item>Männlich</item>
         <item>Weiblich</item>

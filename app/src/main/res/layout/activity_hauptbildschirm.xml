@@ -19,8 +19,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@color/sonicBackgroundColor"
             android:onClick="openActivityProfile"
-            android:text="@string/profil" />
+            android:shadowColor="@color/sonicBackgroundShadow"
+            android:text="@string/profil"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -33,7 +38,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/verbrennt" />
+                android:text="@string/verbrennt"
+                android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
             <TextView
                 android:id="@+id/tvCountBurnt"
@@ -41,6 +47,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="123"
+                android:textColor="@color/common_google_signin_btn_text_dark_default"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -56,7 +63,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/schritte" />
+                android:text="@string/schritte"
+                android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
             <TextView
                 android:id="@+id/tvCountSteps"
@@ -64,6 +72,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="123"
+                android:textColor="@color/common_google_signin_btn_text_dark_default"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -83,5 +92,9 @@
         android:id="@+id/btnGo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/loslegen" />
+        android:background="@color/sonicBackgroundColor"
+        android:hapticFeedbackEnabled="true"
+        android:shadowColor="@color/sonicBackgroundShadow"
+        android:text="@string/loslegen"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
 </LinearLayout>
