@@ -17,6 +17,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    DatabaseHelper myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
