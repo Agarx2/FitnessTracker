@@ -61,11 +61,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="43dp"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginTop="10dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
@@ -76,15 +77,30 @@
                 android:text="@string/alter"
                 android:textColor="@color/sonicBackgroundColor" />
 
-            <EditText
-                android:id="@+id/etAlter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+            <LinearLayout
+                android:layout_width="212dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/etDatum"
+                    android:layout_width="167dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:editable="false"
+                    android:ems="10"
+                    android:enabled="true"
+                    android:inputType="textPersonName" />
+
+                <ImageButton
+                    android:id="@+id/btnDate"
+                    android:layout_width="62dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="@android:drawable/ic_menu_my_calendar" />
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -178,7 +194,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="67dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
@@ -212,15 +228,16 @@
         android:layout_alignParentBottom="true">
 
         <Button
-            android:id="@+id/btnSave1"
+            android:id="@+id/btnSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/sonicBackgroundColor"
-            android:text="Button"
-            android:textColor="@color/common_google_signin_btn_text_dark_default"
-            android:textStyle="bold"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:background="@color/sonicBackgroundColor"
+            android:onClick="saveInformations"
+            android:text="Speichern und Zurück"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 

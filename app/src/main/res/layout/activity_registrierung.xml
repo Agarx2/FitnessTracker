@@ -77,14 +77,21 @@
                 android:textColor="@color/sonicBackgroundColor" />
 
             <EditText
-                android:id="@+id/etAlter"
-                android:layout_width="wrap_content"
+                android:id="@+id/etDatum"
+                android:layout_width="142dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:ems="10"
+                android:enabled="true"
                 android:inputType="textPersonName" />
+
+            <ImageButton
+                android:id="@+id/btnDate"
+                android:layout_width="62dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:background="@android:drawable/ic_menu_my_calendar" />
 
         </LinearLayout>
 
