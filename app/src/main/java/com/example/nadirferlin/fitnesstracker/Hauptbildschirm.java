@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -17,24 +18,33 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private GoogleApiClient mGoogleApiClient;
+
+    public static final String TAG = Hauptbildschirm.class.getSimpleName();
+    private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
+
     DatabaseHelper myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hauptbildschirm);
+        addListenerToButtons();
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+    }
+
+    public void addListenerToButtons() {
         final Button btnProfile = (Button) findViewById(R.id.btnProfil);
 
         btnProfile.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     btnProfile.setBackgroundColor(getResources().getColor(R.color.sonicBackgroundShadow));
                     openActivityProfile(btnProfile);
                     return true;
@@ -51,7 +61,7 @@ public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallb
         btnGo.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     btnGo.setBackgroundColor(getResources().getColor(R.color.sonicBackgroundShadow));
                     //
                     return true;
@@ -64,11 +74,10 @@ public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallb
         });
     }
 
-    public void openActivityProfile(View v){
+    public void openActivityProfile(View v) {
         Intent thisIntent = new Intent(this, profilActivity.class);
         startActivity(thisIntent);
     }
-
 
     /**
      * Manipulates the map once available.
@@ -88,4 +97,5 @@ public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallb
         mMap.addMarker(new MarkerOptions().position(zh).title("Zürcher Hauptbahnhof"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(zh));
     }
+
 }

@@ -96,5 +96,7 @@
         android:hapticFeedbackEnabled="true"
         android:shadowColor="@color/sonicBackgroundShadow"
         android:text="@string/loslegen"
-        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 </LinearLayout>
