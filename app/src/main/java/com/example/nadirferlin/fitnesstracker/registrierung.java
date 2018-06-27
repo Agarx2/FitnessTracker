@@ -1,5 +1,6 @@
 package com.example.nadirferlin.fitnesstracker;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -15,9 +16,10 @@ public class registrierung extends AppCompatActivity {
 
     public static boolean registriert;
     DatabaseHelper myDb;
-    EditText editName, editAlter, editGewicht, editTaetigkeit, editAktivitaet;
+    EditText editName, editDatum, editGewicht, editTaetigkeit, editAktivitaet;
     Spinner spinnerValue;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +43,7 @@ public class registrierung extends AppCompatActivity {
         });
 
         editName = (EditText)findViewById(R.id.etName);
-        editAlter = (EditText)findViewById(R.id.etAlter);
+        editDatum = (EditText)findViewById(R.id.etDatum);
         editGewicht = (EditText)findViewById(R.id.etGewicht);
         editTaetigkeit = (EditText)findViewById(R.id.etTaetigkeit);
         editAktivitaet = (EditText)findViewById(R.id.etAktivitaet);
@@ -51,15 +53,17 @@ public class registrierung extends AppCompatActivity {
     }
 
     public void signUp(View v){
-        Intent thisIntent = new Intent(this, Hauptbildschirm.class);
-        startActivity(thisIntent);
+        try {
+            Intent thisIntent = new Intent(this, Hauptbildschirm.class);
+            String a = editDatum.getText().toString();
+            boolean isInserted = myDb.insertData(editName.getText().toString(), editDatum.getText().toString(), spinnerValue.getSelectedItem().toString(),
+                    Double.parseDouble(editGewicht.getText().toString()), editTaetigkeit.getText().toString(), editAktivitaet.getText().toString());
 
-        boolean isInserted = myDb.insertData(editName.getText().toString(), editAlter.getText().toString(), spinnerValue.getSelectedItem().toString(),
-                Double.parseDouble(editGewicht.getText().toString()), editTaetigkeit.getText().toString(), editAktivitaet.getText().toString());
-
-        if(isInserted == true){
-            Toast.makeText(registrierung.this, "Data inserted", Toast.LENGTH_SHORT).show();
-        }else{
+            if (isInserted == true) {
+                Toast.makeText(registrierung.this, "Data inserted", Toast.LENGTH_SHORT).show();
+                startActivity(thisIntent);
+            }
+        }catch(Exception ex){
             Toast.makeText(registrierung.this, "Data not inserted", Toast.LENGTH_SHORT).show();
         }
     }
