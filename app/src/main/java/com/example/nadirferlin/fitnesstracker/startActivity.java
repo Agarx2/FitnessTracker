@@ -1,6 +1,7 @@
 package com.example.nadirferlin.fitnesstracker;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ public class startActivity extends AppCompatActivity {
 
     WebView webView;
     Intent thisIntent;
+    private DatabaseHelper myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +20,17 @@ public class startActivity extends AppCompatActivity {
 
         webView = (WebView) findViewById(R.id.webView);
         webView.loadUrl("file:///android_asset/sonic.html");
-        thisIntent = new Intent(this, registrierung.class);
+
+        myDb = new DatabaseHelper(this);
+        Cursor cursor = myDb.getAllData();
+
+        if(cursor.getCount() != 0){
+            thisIntent = new Intent(this, Hauptbildschirm.class);
+
+        }
+        else {
+            thisIntent = new Intent(this, registrierung.class);
+        }
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -27,7 +39,5 @@ public class startActivity extends AppCompatActivity {
                 startActivity(thisIntent);
             }
         }, 2000);
-
-
     }
 }

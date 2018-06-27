@@ -19,6 +19,21 @@
         <item>Männlich</item>
         <item>Weiblich</item>
     </string-array>
+
+    <string-array name="array_Taetigkeit">
+        <item>Sitzend, kaum körperliche Arbeit</item>
+        <item>Sitzend, gehend und stehend</item>
+        <item>Stehend und gehend</item>
+        <item>Körperliche anstrengende Arbeit</item>
+    </string-array>
+
+    <string-array name="array_Hobby">
+        <item>Kein Training</item>
+        <item>1 - 2 leichte Trainings pro Woche</item>
+        <item>2 gute Trainigs pro Woche</item>
+        <item>3 oder mehr intensive Trainigs pro Woche</item>
+    </string-array>
+
     <string name="title_activity_hauptbildschirm">Map</string>
     <string name="title_activity_test">Map</string>
 

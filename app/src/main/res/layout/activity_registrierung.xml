@@ -81,6 +81,7 @@
                 android:layout_width="142dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:editable="false"
                 android:ems="10"
                 android:enabled="true"
                 android:inputType="textPersonName" />
@@ -91,7 +92,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                android:background="@android:drawable/ic_menu_my_calendar" />
+                android:background="@android:drawable/ic_menu_my_calendar"
+                android:onClick="openDatePicker" />
 
         </LinearLayout>
 
@@ -166,21 +168,26 @@
 
             <TextView
                 android:id="@+id/tvTaetigkeit"
-                android:layout_width="112dp"
+                android:layout_width="168dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:text="@string/tätigkeit"
                 android:textColor="@color/sonicBackgroundColor" />
 
-            <EditText
-                android:id="@+id/etTaetigkeit"
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/spinnerTaetigkeit"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                android:entries="@array/array_Taetigkeit" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -194,21 +201,24 @@
 
             <TextView
                 android:id="@+id/tvAktivitaet"
-                android:layout_width="112dp"
+                android:layout_width="168dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/sportlicheAktivität"
                 android:textColor="@color/sonicBackgroundColor" />
 
-            <EditText
-                android:id="@+id/etAktivitaet"
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/spinnerHobby"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                android:entries="@array/array_Hobby" />
+
         </LinearLayout>
 
     </LinearLayout>
