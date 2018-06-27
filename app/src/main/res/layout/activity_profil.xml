@@ -88,9 +88,8 @@
                     android:layout_width="167dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:editable="false"
+                    android:enabled="false"
                     android:ems="10"
-                    android:enabled="true"
                     android:inputType="textPersonName" />
 
                 <ImageButton
@@ -99,7 +98,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginRight="20dp"
                     android:layout_weight="1"
-                    android:background="@android:drawable/ic_menu_my_calendar" />
+                    android:background="@android:drawable/ic_menu_my_calendar"
+                    android:onClick="openDatePicker" />
             </LinearLayout>
 
         </LinearLayout>
@@ -161,7 +161,8 @@
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName|numberDecimal"
+                android:numeric="decimal" />
         </LinearLayout>
 
         <LinearLayout
@@ -227,6 +228,18 @@
                 android:entries="@array/array_Hobby" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvFehlermeldung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/fehlermeldung"
+            android:textColor="@android:color/holo_red_light"
+            android:visibility="invisible" />
 
     </LinearLayout>
 

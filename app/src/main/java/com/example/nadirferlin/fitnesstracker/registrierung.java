@@ -16,9 +16,11 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class registrierung extends AppCompatActivity {
 
@@ -29,6 +31,7 @@ public class registrierung extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private String TAG ="registrierung";
     private Intent thisIntent;
+    private TextView showFehlermeldung;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -61,22 +64,39 @@ public class registrierung extends AppCompatActivity {
             editSpinnerHobby = (Spinner)findViewById(R.id.spinnerHobby);
             editSpinnerGeschlecht = (Spinner)findViewById(R.id.spinnerGeschlecht);
             dateButton = (ImageButton)findViewById(R.id.btnDate);
+            showFehlermeldung = (TextView)findViewById(R.id.tvFehlermeldung);
 
+            mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                    month = month + 1;
+                    Log.d(TAG, "onDateSet: dd/mm/yyy: " + day + "/" + month + "/" + year);
+                    String date = day +"." + month + "." + year;
+                    editDatum.setText(date);
+                }
+            };
     }
 
     public void signUp(View v){
-        try {
-            Intent thisIntent = new Intent(this, Hauptbildschirm.class);
-            String a = editDatum.getText().toString();
-            boolean isInserted = myDb.insertData(editName.getText().toString(), editDatum.getText().toString(), editSpinnerGeschlecht.getSelectedItemPosition() + "",
-                    Double.parseDouble(editGewicht.getText().toString()), editSpinnerTaetigkeit.getSelectedItemPosition() + "", editSpinnerHobby.getSelectedItemPosition() + "");
+        if((editName.getText().toString().equals("")) || (editDatum.getText().toString().equals("")) || (editGewicht.getText().toString().equals("")) || (editSpinnerTaetigkeit.getSelectedItem().toString().equals("")) ||
+            (editSpinnerHobby.getSelectedItem().toString().equals(""))){
 
-            if (isInserted == true) {
-                Toast.makeText(registrierung.this, "Daten gespeichert", Toast.LENGTH_SHORT).show();
-                startActivity(thisIntent);
+            showFehlermeldung.setVisibility(View.VISIBLE);
+        }
+        else{
+            try {
+                Intent thisIntent = new Intent(this, Hauptbildschirm.class);
+                String a = editDatum.getText().toString();
+                boolean isInserted = myDb.insertData(editName.getText().toString(), editDatum.getText().toString(), editSpinnerGeschlecht.getSelectedItemPosition() + "",
+                        Double.parseDouble(editGewicht.getText().toString()), editSpinnerTaetigkeit.getSelectedItemPosition() + "", editSpinnerHobby.getSelectedItemPosition() + "");
+
+                if (isInserted == true) {
+                    Toast.makeText(registrierung.this, "Daten gespeichert", Toast.LENGTH_SHORT).show();
+                    startActivity(thisIntent);
+                }
+            }catch(Exception ex){
+              Toast.makeText(registrierung.this, "Daten nicht gespeichert", Toast.LENGTH_SHORT).show();
             }
-        }catch(Exception ex){
-            Toast.makeText(registrierung.this, "Daten nicht gespeichert", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -88,20 +108,10 @@ public class registrierung extends AppCompatActivity {
 
         DatePickerDialog dialog = new DatePickerDialog(
                 registrierung.this,
-                android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                android.R.style.Theme_Material_Dialog_NoActionBar_MinWidth,
                 mDateSetListener,
                 year, month, day);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
-
-        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                month = month + 1;
-                Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
-                String date = month +"/" + day + "/" + year;
-                editDatum.setText(date);
-            }
-        };
     }
 }
