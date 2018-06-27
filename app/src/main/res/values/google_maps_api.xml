@@ -2,6 +2,8 @@
     <!--
     TODO: Before you run your application, you need a Google Maps API key.
 
+
+
     To get one, follow this link, follow the directions and press "Create" at the end:
 
     https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=82:A1:87:FE:50:BF:EA:CE:CE:EB:CC:29:FA:5B:A2:61:91:85:24:5F%3Bcom.example.nadirferlin.fitnesstracker
@@ -13,6 +15,7 @@
 
     SHA-1 certificate fingerprint:
     82:A1:87:FE:50:BF:EA:CE:CE:EB:CC:29:FA:5B:A2:61:91:85:24:5F
+    https://stackoverflow.com/questions/27609442/how-to-get-the-sha-1-fingerprint-certificate-in-android-studio-for-debug-mode
 
     Alternatively, follow the directions here:
     https://developers.google.com/maps/documentation/android/start#get-key
