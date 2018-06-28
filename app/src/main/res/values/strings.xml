@@ -1,45 +1,49 @@
-<resources>
-    <string name="app_name">FitnessTracker</string>
-    <string name="profil">Profil</string>
-    <string name="verbrennt">Verbrennt: </string>
-    <string name="schritte">Schritte:</string>
-    <string name="loslegen">Loslegen!</string>
+    <resources>
+        <string name="app_name">FitnessTracker</string>
+        <string name="profil">Profil</string>
+        <string name="verbrennt">Verbrennt: </string>
+        <string name="schritte">Schritte:</string>
+        <string name="loslegen">Loslegen!</string>
 
-    <string name="registrierung">Registrierung</string>
-    <string name="registrieren">Registrieren</string>
+        <string name="registrierung">Registrierung</string>
+        <string name="registrieren">Registrieren</string>
 
-    <string name="name">Name:</string>
-    <string name="alter">Alter:</string>
-    <string name="geschlecht">Geschlecht:</string>
-    <string name="gewicht">Gewicht:</string>
-    <string name="tätigkeit">Tätigkeit:</string>
-    <string name="sportlicheAktivität">Sportliche\nAktivität:</string>
+        <string name="fehlermeldung">Es sind nicht alle Eingaben ausgefüllt worden!</string>
 
-    <string-array name="array_Geschlecht">
-        <item>Männlich</item>
-        <item>Weiblich</item>
-    </string-array>
+        <string name="name">Name:</string>
+        <string name="alter">Alter:</string>
+        <string name="geschlecht">Geschlecht:</string>
+        <string name="gewicht">Gewicht:</string>
+        <string name="tätigkeit">Tätigkeit:</string>
+        <string name="sportlicheAktivität">Sportliche\nAktivität:</string>
 
-    <string-array name="array_Taetigkeit">
-        <item>Sitzend, kaum körperliche Arbeit</item>
-        <item>Sitzend, gehend und stehend</item>
-        <item>Stehend und gehend</item>
-        <item>Körperliche anstrengende Arbeit</item>
-    </string-array>
+        <string-array name="array_Geschlecht">
+            <item>Männlich</item>
+            <item>Weiblich</item>
+        </string-array>
 
-    <string-array name="array_Hobby">
-        <item>Kein Training</item>
-        <item>1 - 2 leichte Trainings pro Woche</item>
-        <item>2 gute Trainigs pro Woche</item>
-        <item>3 oder mehr intensive Trainigs pro Woche</item>
-    </string-array>
+        <string-array name="array_Taetigkeit">
+            <item> </item>
+            <item>Sitzend, kaum körperliche Arbeit</item>
+            <item>Sitzend, gehend und stehend</item>
+            <item>Stehend und gehend</item>
+            <item>Körperliche anstrengende Arbeit</item>
+        </string-array>
 
-    <string name="title_activity_hauptbildschirm">Map</string>
-    <string name="title_activity_test">Map</string>
+        <string-array name="array_Hobby">
+            <item> </item>
+            <item>Kein Training</item>
+            <item>1 - 2 leichte Trainings pro Woche</item>
+            <item>2 gute Trainigs pro Woche</item>
+            <item>3 oder mehr intensive Trainigs pro Woche</item>
+        </string-array>
 
-    <string name="permission_refused">Permission was not granted</string>
-    <string name="permission_request_title">Special Permission Request</string>
-    <string name="app_permission_notice">This permission request is very important to your app functionality. If it is not granted your app might not work the way it is intended</string>
-    <string name="failed_draw">Empty line path return</string>
-    <string name="server_error">Server error. Something when wrong with the server</string>
-</resources>
+        <string name="title_activity_hauptbildschirm">Map</string>
+        <string name="title_activity_test">Map</string>
+
+        <string name="permission_refused">Permission was not granted</string>
+        <string name="permission_request_title">Special Permission Request</string>
+        <string name="app_permission_notice">This permission request is very important to your app functionality. If it is not granted your app might not work the way it is intended</string>
+        <string name="failed_draw">Empty line path return</string>
+        <string name="server_error">Server error. Something when wrong with the server</string>
+    </resources>
