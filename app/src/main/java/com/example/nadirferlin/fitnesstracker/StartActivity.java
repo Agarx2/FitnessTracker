@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebView;
 
+/*
+ * Beginn der App welche 2 Sekunden lang gif zeigt
+ */
 public class StartActivity extends AppCompatActivity {
 
     WebView webView;

@@ -19,6 +19,9 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+/*
+ * Speichert die ersten eingaben des Benutzers ein
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     private DatabaseHelper myDb;
@@ -74,6 +77,11 @@ public class RegisterActivity extends AppCompatActivity {
             };
     }
 
+    /**
+     * Methode berechnet die anzahl Kalorien für die zurückgelegte Distanz
+     * @param v - representiert den Button
+     * @return gibt die anzahl Kalorien als String zurück, auf 2 Dezimalstellen genau
+     */
     public void signUp(View v){
         if((editName.getText().toString().equals("")) || (editDate.getText().toString().equals("")) || (editWeight.getText().toString().equals("")) || (editSpinnerJob.getSelectedItem().toString().equals("")) ||
             (editSpinnerHobby.getSelectedItem().toString().equals(""))){

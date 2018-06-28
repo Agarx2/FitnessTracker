@@ -18,7 +18,6 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -33,6 +32,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.maps.android.SphericalUtil;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,7 +95,7 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
             steps = SphericalUtil.computeLength(polygon);
 
             burntCalories.setText(calcCalories(steps));
-            walkedDistance.setText(steps * 0.6 + "");
+            walkedDistance.setText(((Math.round(steps * 100.0)/100.0) * 0.6 + ""));
 
             isRunning = false;
         } else {
@@ -191,6 +191,11 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
 
     }
 
+    /**
+     * Methode berechnet die anzahl Kalorien für die zurückgelegte Distanz
+     * @param steps - die anzahl Schritte für die Berechnung der Kalorien
+     * @return gibt die anzahl Kalorien als String zurück, auf 2 Dezimalstellen genau
+     */
     public String calcCalories(double steps){
         Cursor res = myDb.getAllData();
         String weight = "";
@@ -200,7 +205,7 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
 
         double m = steps * 0.6;
         double km = m / 1000;
-        return Double.parseDouble(weight) * km + "";
+        return Double.parseDouble(weight) * (Math.round(km*100.0)/100.0) + "";
     }
 
     /**
