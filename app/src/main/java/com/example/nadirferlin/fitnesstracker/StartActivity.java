@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebView;
 
-public class startActivity extends AppCompatActivity {
+public class StartActivity extends AppCompatActivity {
 
     WebView webView;
     Intent thisIntent;
@@ -25,11 +25,11 @@ public class startActivity extends AppCompatActivity {
         Cursor cursor = myDb.getAllData();
 
         if(cursor.getCount() != 0){
-            thisIntent = new Intent(this, Hauptbildschirm.class);
+            thisIntent = new Intent(this, MainPageActivity.class);
 
         }
         else {
-            thisIntent = new Intent(this, registrierung.class);
+            thisIntent = new Intent(this, RegisterActivity.class);
         }
 
         final Handler handler = new Handler();

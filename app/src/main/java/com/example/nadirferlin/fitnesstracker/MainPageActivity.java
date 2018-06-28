@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
@@ -17,9 +18,9 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -39,10 +40,10 @@ import java.util.List;
 Siehe auch: https://stackoverflow.com/questions/27609442/how-to-get-the-sha-1-fingerprint-certificate-in-android-studio-for-debug-mode
  */
 
-public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallback {
+public class MainPageActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleApiClient mGoogleApiClient;
-    private static final String TAG = Hauptbildschirm.class.getSimpleName();
+    private static final String TAG = MainPageActivity.class.getSimpleName();
     private GoogleMap mMap;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private String provider;
@@ -54,11 +55,13 @@ public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallb
     private List<LatLng> polygon;
     private Marker mZH;
     private double steps;
+    private DatabaseHelper myDb;
+    private TextView burntCalories, walkedDistance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hauptbildschirm);
+        setContentView(R.layout.activity_mainpage);
         addListenerToButtons();
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -68,6 +71,10 @@ public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallb
         mapFragment.getMapAsync(this);
 
         polygon = new ArrayList<>();
+        burntCalories = (TextView)findViewById(R.id.tvCountBurnt);
+        walkedDistance = (TextView)findViewById(R.id.tvCountSteps);
+        myDb = new DatabaseHelper(this);
+
     }
 
     /**
@@ -82,12 +89,13 @@ public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallb
         if (isRunning) {
             Button btnGo = (Button) findViewById(R.id.btnGo);
             btnGo.setText("LOSLEGEN!");
-            Toast.makeText(Hauptbildschirm.this, "Calculating...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainPageActivity.this, "Calculating...", Toast.LENGTH_SHORT).show();
             point = "Ende";
 
             steps = SphericalUtil.computeLength(polygon);
 
-            calculateCalories(steps);
+            burntCalories.setText(calcCalories(steps));
+            walkedDistance.setText(steps * 0.6 + "");
 
             isRunning = false;
         } else {
@@ -95,7 +103,7 @@ public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallb
             mMap.clear();
             point = "Start";
             Button btnGo = (Button) findViewById(R.id.btnGo);
-            Toast.makeText(Hauptbildschirm.this, "Tracking...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainPageActivity.this, "Tracking...", Toast.LENGTH_SHORT).show();
             btnGo.setText("STOP!");
             isRunning = true;
         }
@@ -183,11 +191,16 @@ public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallb
 
     }
 
-    private void calculateCalories(Double steps) {
-        TextView tvCountSteps = (TextView) findViewById(R.id.tvCountSteps);
-        TextView tvCountBurnt = (TextView) findViewById(R.id.tvCountBurnt);
+    public String calcCalories(double steps){
+        Cursor res = myDb.getAllData();
+        String weight = "";
+        while(res.moveToNext()){
+            weight = res.getString(4);
+        }
 
-        tvCountSteps.setText(steps.toString());
+        double m = steps * 0.6;
+        double km = m / 1000;
+        return Double.parseDouble(weight) * km + "";
     }
 
     /**
@@ -195,7 +208,7 @@ public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallb
      * @param v
      */
     public void openActivityProfile(View v) {
-        Intent thisIntent = new Intent(this, profilActivity.class);
+        Intent thisIntent = new Intent(this, ProfileActivity.class);
         startActivity(thisIntent);
     }
 

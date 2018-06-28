@@ -11,7 +11,7 @@
         <string name="fehlermeldung">Es sind nicht alle Eingaben ausgefüllt worden!</string>
 
         <string name="name">Name:</string>
-        <string name="alter">Alter:</string>
+        <string name="alter">Geburtsdatum:</string>
         <string name="geschlecht">Geschlecht:</string>
         <string name="gewicht">Gewicht:</string>
         <string name="tätigkeit">Tätigkeit:</string>
