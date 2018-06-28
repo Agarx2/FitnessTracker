@@ -94,7 +94,7 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
             point = "Ende";
 
             tvCountBurnt.setText(calcCalories(steps));
-            tvCountSteps.setText(((Math.round(steps * 100.0)/100.0) * 0.6 + ""));
+            tvCountSteps.setText((int) Math.round(steps / 0.6) + "");
 
             isRunning = false;
         } else {
@@ -203,7 +203,7 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
             weight = res.getString(4);
         }
 
-        double m = steps * 0.6;
+        double m = steps / 0.6;
         double km = m / 1000;
         return Double.parseDouble(weight) * (Math.round(km*100.0)/100.0) + "";
     }
