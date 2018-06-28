@@ -13,7 +13,7 @@
         tools:layout_editor_absoluteY="125dp">
 
         <TextView
-            android:id="@+id/tvProfil"
+            android:id="@+id/tvRegister"
             android:layout_width="wrap_content"
             android:layout_height="90dp"
             android:layout_weight="1"
@@ -69,7 +69,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvAlter"
+                android:id="@+id/tvDate"
                 android:layout_width="112dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -77,7 +77,7 @@
                 android:textColor="@color/sonicBackgroundColor" />
 
             <EditText
-                android:id="@+id/etDatum"
+                android:id="@+id/etDate"
                 android:layout_width="142dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -106,7 +106,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvGeschlecht"
+                android:id="@+id/tvGender"
                 android:layout_width="168dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -116,16 +116,16 @@
                 android:textColor="@color/sonicBackgroundColor" />
 
             <Spinner
-                android:id="@+id/spinnerGeschlecht"
+                android:id="@+id/spinnerGender"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
-                android:entries="@array/array_Geschlecht"
-                style="@style/Widget.AppCompat.Spinner.Underlined"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:entries="@array/array_Geschlecht" />
         </LinearLayout>
 
         <LinearLayout
@@ -138,7 +138,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvGewicht"
+                android:id="@+id/tvWeight"
                 android:layout_width="112dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -146,7 +146,7 @@
                 android:textColor="@color/sonicBackgroundColor" />
 
             <EditText
-                android:id="@+id/etGewicht"
+                android:id="@+id/etWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -167,7 +167,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvTaetigkeit"
+                android:id="@+id/tvJob"
                 android:layout_width="168dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -177,7 +177,7 @@
                 android:textColor="@color/sonicBackgroundColor" />
 
             <Spinner
-                android:id="@+id/spinnerTaetigkeit"
+                android:id="@+id/spinnerJob"
                 style="@style/Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -200,7 +200,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvAktivitaet"
+                android:id="@+id/tvHobby"
                 android:layout_width="168dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -222,7 +222,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tvFehlermeldung"
+            android:id="@+id/tvError"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
