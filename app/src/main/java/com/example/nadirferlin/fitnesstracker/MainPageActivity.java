@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -52,11 +53,11 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
     private double lon1;
     private boolean isRunning;
     private String point;
-    private List<LatLng> polygon;
+    private List<LatLng> polygonPoints;
     private Marker mZH;
     private double steps;
     private DatabaseHelper myDb;
-    private TextView burntCalories, walkedDistance;
+    private TextView tvCountBurnt, tvCountSteps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +71,9 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
 
         mapFragment.getMapAsync(this);
 
-        polygon = new ArrayList<>();
-        burntCalories = (TextView)findViewById(R.id.tvCountBurnt);
-        walkedDistance = (TextView)findViewById(R.id.tvCountSteps);
+        polygonPoints = new ArrayList<>();
+        tvCountBurnt = (TextView)findViewById(R.id.tvCountBurnt);
+        tvCountSteps = (TextView)findViewById(R.id.tvCountSteps);
         myDb = new DatabaseHelper(this);
 
     }
@@ -92,19 +93,18 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
             Toast.makeText(MainPageActivity.this, "Calculating...", Toast.LENGTH_SHORT).show();
             point = "Ende";
 
-            steps = SphericalUtil.computeLength(polygon);
-
-            burntCalories.setText(calcCalories(steps));
-            walkedDistance.setText(((Math.round(steps * 100.0)/100.0) * 0.6 + ""));
+            tvCountBurnt.setText(calcCalories(steps));
+            tvCountSteps.setText(((Math.round(steps * 100.0)/100.0) * 0.6 + ""));
 
             isRunning = false;
         } else {
-            polygon.clear();
+
             mMap.clear();
             point = "Start";
             Button btnGo = (Button) findViewById(R.id.btnGo);
             Toast.makeText(MainPageActivity.this, "Tracking...", Toast.LENGTH_SHORT).show();
             btnGo.setText("STOP!");
+
             isRunning = true;
         }
 
@@ -249,6 +249,7 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
      */
     private void drawPolygon( double latitude, double longitude) {
 
+        List<LatLng> polygon = new ArrayList<>();
         //old lat and long
         polygon.add(new LatLng(lat1, lon1));
         //new lat and long
@@ -263,6 +264,8 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
 
         lat1=latitude;
         lon1=longitude;
+
+        steps = steps + SphericalUtil.computeLength(polygon);
     }
 
     /**
