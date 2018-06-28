@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebView;
 
-public class StartActivity extends AppCompatActivity {
+public class IntroActivity extends AppCompatActivity {
 
     WebView webView;
     Intent thisIntent;
@@ -16,7 +16,7 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.activity_intro);
 
         webView = (WebView) findViewById(R.id.webView);
         webView.loadUrl("file:///android_asset/sonic.html");
