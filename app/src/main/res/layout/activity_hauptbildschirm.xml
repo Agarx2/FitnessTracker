@@ -94,6 +94,7 @@
         android:layout_height="wrap_content"
         android:background="@color/sonicBackgroundColor"
         android:hapticFeedbackEnabled="true"
+        android:onClick="startRoute"
         android:shadowColor="@color/sonicBackgroundShadow"
         android:text="@string/loslegen"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
