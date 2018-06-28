@@ -70,6 +70,13 @@ public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallb
         polygon = new ArrayList<>();
     }
 
+    /**
+     * Bei Start wird ein Marker gesetzt, der den Startpunkt darstellt
+     * Während der Benutzer sich bewegt wird eine Linie gezogen
+     * Bei Beendigung der Tätigkeit wird ein Marker gesetzt, der den Endpunkt darstellt
+     * Danach wird die Länge der Linie und die verbrannten Kalorien berechnet und angezeigt
+     * @param view - der Button der die Funktion aufruft
+     */
     public void startRoute(View view) {
 
         if (isRunning) {
@@ -138,10 +145,8 @@ public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallb
                 public void onLocationChanged(Location myLocation) {
 
                     if (!isRunning) {
-
                         locationManager.removeUpdates(this);
                         locationManager = null;
-
                     }
 
                     // Getting latitude of the current location
@@ -172,7 +177,6 @@ public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallb
                 public void onProviderDisabled(String s) { }
 
             });
-
         }
 
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
@@ -186,6 +190,10 @@ public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallb
         tvCountSteps.setText(steps.toString());
     }
 
+    /**
+     *
+     * @param v
+     */
     public void openActivityProfile(View v) {
         Intent thisIntent = new Intent(this, profilActivity.class);
         startActivity(thisIntent);
@@ -214,9 +222,13 @@ public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallb
         LatLng zh = new LatLng(47.378107, 8.539725);
         mZH = mMap.addMarker(new MarkerOptions().position(zh).title("Zürcher Hauptbahnhof"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(zh));
-
     }
 
+    /**
+     * Zeichnet die Linie auf der Map
+     * @param latitude
+     * @param longitude
+     */
     private void drawPolygon( double latitude, double longitude) {
 
         //old lat and long
@@ -235,6 +247,9 @@ public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallb
         lon1=longitude;
     }
 
+    /**
+     * Zoomt auf die Location des Benutzers
+     */
     private GoogleMap.OnMyLocationButtonClickListener onMyLocationButtonClickListener =
             new GoogleMap.OnMyLocationButtonClickListener() {
                 @Override
@@ -245,6 +260,9 @@ public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallb
                 }
             };
 
+    /**
+     * Zeigt die Benutzer-Location an
+     */
     private void enableMyLocationIfPermitted() {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
@@ -260,6 +278,9 @@ public class Hauptbildschirm extends FragmentActivity implements OnMapReadyCallb
         }
     }
 
+    /**
+     * Fügt die Druck-Animation und die Methoden den Buttons zu
+     */
     public void addListenerToButtons() {
         final Button btnProfile = (Button) findViewById(R.id.btnProfil);
 
