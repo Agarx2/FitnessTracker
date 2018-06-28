@@ -18,7 +18,6 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -33,7 +32,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.maps.android.SphericalUtil;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -155,25 +153,28 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
                     if (!isRunning) {
                         locationManager.removeUpdates(this);
                         locationManager = null;
+
+                    } else {
+                        // Getting latitude of the current location
+                        double latitude = myLocation.getLatitude();
+
+                        // Getting longitude of the current location
+                        double longitude = myLocation.getLongitude();
+
+                        // Creating a LatLng object for the current location
+                        LatLng latLng = new LatLng(latitude, longitude);
+
+                        // Showing the current location in Google Map
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+
+                        // Zoom in the Google Map
+                        mMap.animateCamera(CameraUpdateFactory.zoomTo(18));
+
+                        //Draw polyline
+                        drawPolygon(latitude, longitude);
                     }
 
-                    // Getting latitude of the current location
-                    double latitude = myLocation.getLatitude();
 
-                    // Getting longitude of the current location
-                    double longitude = myLocation.getLongitude();
-
-                    // Creating a LatLng object for the current location
-                    LatLng latLng = new LatLng(latitude, longitude);
-
-                    // Showing the current location in Google Map
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-
-                    // Zoom in the Google Map
-                    mMap.animateCamera(CameraUpdateFactory.zoomTo(18));
-
-                    //Draw polyline
-                    drawPolygon(latitude, longitude);
 
                 }
 
@@ -209,7 +210,7 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
     }
 
     /**
-     *
+     * Öffnet das Profil
      * @param v
      */
     public void openActivityProfile(View v) {
