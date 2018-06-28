@@ -108,10 +108,11 @@ public class registrierung extends AppCompatActivity {
 
         DatePickerDialog dialog = new DatePickerDialog(
                 registrierung.this,
-                android.R.style.Theme_Material_Dialog_NoActionBar_MinWidth,
+                android.R.style.Theme_Material_Dialog,
                 mDateSetListener,
                 year, month, day);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.sonicBackgroundShadow)));
+
         dialog.show();
     }
 }

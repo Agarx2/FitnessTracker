@@ -128,10 +128,17 @@ public class profilActivity extends AppCompatActivity {
 
         DatePickerDialog dialog = new DatePickerDialog(
                 profilActivity.this,
-                android.R.style.Theme_Material_Dialog_NoActionBar_MinWidth,
+                android.R.style.Theme_Material_Dialog,
                 mDateSetListener,
                 year, month, day);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.sonicBackgroundShadow)));
+
         dialog.show();
+    }
+
+    public double calcCalories(double gewicht, double schritte){
+        double m = schritte / 100 * 70;
+        double km = m / 1000;
+        return gewicht * km;
     }
 }
