@@ -81,11 +81,12 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
      * Während der Benutzer sich bewegt wird eine Linie gezogen
      * Bei Beendigung der Tätigkeit wird ein Marker gesetzt, der den Endpunkt darstellt
      * Danach wird die Länge der Linie und die verbrannten Kalorien berechnet und angezeigt
-     * @param view - der Button der die Funktion aufruft
+     * @param view - der Button, der die Funktion aufruft
      */
     public void startRoute(View view) {
 
         if (isRunning) {
+            //Stoppen des Trackings
             Button btnGo = (Button) findViewById(R.id.btnGo);
             btnGo.setText("LOSLEGEN!");
             Toast.makeText(MainPageActivity.this, "Calculating...", Toast.LENGTH_SHORT).show();
@@ -97,7 +98,7 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
             isRunning = false;
 
         } else {
-
+            //Starten des Trackings
             mMap.clear();
             point = "Start";
             Button btnGo = (Button) findViewById(R.id.btnGo);
@@ -125,6 +126,7 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
         }
         Location myLocation = locationManager.getLastKnownLocation(provider);
 
+
         if (myLocation == null) {
             criteria.setAccuracy(Criteria.ACCURACY_FINE);
             provider = locationManager.getBestProvider(criteria, false);
@@ -151,11 +153,8 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
                 @Override
                 public void onLocationChanged(Location myLocation) {
 
-                    if (!isRunning) {
-                        locationManager.removeUpdates(this);
-                        locationManager = null;
+                    if (isRunning) {
 
-                    } else {
                         // Getting latitude of the current location
                         double latitude = myLocation.getLatitude();
 
@@ -173,9 +172,11 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
 
                         //Draw polyline
                         drawPolygon(latitude, longitude);
+
+                    } else {
+                        //locationManager.removeUpdates(this);
+                        //locationManager = null;
                     }
-
-
 
                 }
 
@@ -267,7 +268,7 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
         lat1=latitude;
         lon1=longitude;
 
-        steps = steps + SphericalUtil.computeLength(polygon);
+        steps = SphericalUtil.computeLength(polygon);
     }
 
     /**
