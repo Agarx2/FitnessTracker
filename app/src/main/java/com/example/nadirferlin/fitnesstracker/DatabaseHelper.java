@@ -17,10 +17,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_5 = "Gewicht";
     public static final String COL_6 = "Taetigkeit";
     public static final String COL_7 = "Aktivitaet";
+    private SQLiteDatabase db;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
-        SQLiteDatabase db = this.getWritableDatabase();
+        db = this.getWritableDatabase();
     }
 
     @Override
@@ -30,6 +31,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
+    }
+
+    public void clearTable(SQLiteDatabase db){
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
@@ -55,5 +61,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
         return res;
+    }
+
+    public SQLiteDatabase getDb() {
+        return db;
     }
 }

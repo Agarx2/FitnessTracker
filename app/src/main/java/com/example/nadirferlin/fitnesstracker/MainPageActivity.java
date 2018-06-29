@@ -54,7 +54,7 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
     private List<LatLng> polygonPoints;
     private Marker mZH;
     private double steps;
-    private DatabaseHelper myDb;
+    private static DatabaseHelper myDb;
     private TextView tvCountBurnt, tvCountSteps;
 
     @Override
@@ -96,6 +96,7 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
             tvCountSteps.setText((int) Math.round(steps / 0.6) + "");
 
             isRunning = false;
+
         } else {
             //Starten des Trackings
             mMap.clear();

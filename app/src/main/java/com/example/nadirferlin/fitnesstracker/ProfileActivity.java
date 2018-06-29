@@ -84,6 +84,7 @@ public class ProfileActivity extends AppCompatActivity {
             try {
                 Intent thisIntent = new Intent(this, MainPageActivity.class);
                 String a = editDate.getText().toString();
+                myDb.clearTable(myDb.getDb());
                 boolean isInserted = myDb.insertData(editName.getText().toString(), editDate.getText().toString(), editSpinnerGender.getSelectedItemPosition() + "",
                         Double.parseDouble(editWeight.getText().toString()), editSpinnerJob.getSelectedItemPosition() + "", editSpinnerHobby.getSelectedItemPosition() + "");
 
@@ -112,26 +113,9 @@ public class ProfileActivity extends AppCompatActivity {
             editSpinnerHobby.setSelection(Integer.parseInt(res.getString(6)));
             editSpinnerGender.setSelection(Integer.parseInt(res.getString(3)));
         }
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle("a");
-        builder.setMessage(buffer.toString());
     }
 
     public void openDatePicker(View v){
-        Calendar cal = Calendar.getInstance();
-        final int year = cal.get(Calendar.YEAR);
-        final int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-
-        DatePickerDialog dialog = new DatePickerDialog(
-                ProfileActivity.this,
-                android.R.style.Theme_Material_Dialog,
-                mDateSetListener,
-                year, month, day);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.sonicBackgroundShadow)));
-
-        dialog.show();
+        DatePickerHelper.openDatePicker(v, this, mDateSetListener);
     }
 }
