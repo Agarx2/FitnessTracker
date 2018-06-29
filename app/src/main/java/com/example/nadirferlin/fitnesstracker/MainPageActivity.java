@@ -39,6 +39,9 @@ import java.util.List;
 Siehe auch: https://stackoverflow.com/questions/27609442/how-to-get-the-sha-1-fingerprint-certificate-in-android-studio-for-debug-mode
  */
 
+/**
+ * @author Nadir Ferlin
+ */
 public class MainPageActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleApiClient mGoogleApiClient;
@@ -94,9 +97,9 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
 
             tvCountBurnt.setText(calcCalories(steps));
             tvCountSteps.setText((int) Math.round(steps / 0.6) + "");
+            steps = 0.0;
 
             isRunning = false;
-
         } else {
             //Starten des Trackings
             mMap.clear();
@@ -115,18 +118,12 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
         provider = locationManager.getBestProvider(criteria, true);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
+
         Location myLocation = locationManager.getLastKnownLocation(provider);
 
-
+        // falls kein Provider mit dem Kriterium gefunden wurde, hole irgendeins
         if (myLocation == null) {
             criteria.setAccuracy(Criteria.ACCURACY_FINE);
             provider = locationManager.getBestProvider(criteria, false);
@@ -146,15 +143,11 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
                     .snippet("Latitude:" + lat1 + ", Longtitude:" + lon1)
             );
 
-            Log.v(TAG, "Lat1=" + lat1);
-            Log.v(TAG, "Long1=" + lon1);
-
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, new LocationListener() {
                 @Override
                 public void onLocationChanged(Location myLocation) {
 
                     if (isRunning) {
-
                         // Getting latitude of the current location
                         double latitude = myLocation.getLatitude();
 
@@ -172,12 +165,7 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
 
                         //Draw polyline
                         drawPolygon(latitude, longitude);
-
-                    } else {
-                        //locationManager.removeUpdates(this);
-                        //locationManager = null;
                     }
-
                 }
 
                 @Override
@@ -191,7 +179,6 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
         }
 
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-
     }
 
     /**
@@ -208,6 +195,7 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
 
         double m = steps / 0.6;
         double km = m / 1000;
+
         return Double.parseDouble(weight) * (Math.round(km*100.0)/100.0) + "";
     }
 
@@ -268,7 +256,7 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
         lat1=latitude;
         lon1=longitude;
 
-        steps = SphericalUtil.computeLength(polygon);
+        steps = steps + SphericalUtil.computeLength(polygon);
     }
 
     /**

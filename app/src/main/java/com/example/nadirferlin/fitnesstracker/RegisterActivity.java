@@ -56,24 +56,24 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-            editName = (EditText)findViewById(R.id.etName);
-            editDate = (EditText)findViewById(R.id.etDate);
-            editWeight = (EditText)findViewById(R.id.etWeight);
-            editSpinnerJob = (Spinner)findViewById(R.id.spinnerJob);
-            editSpinnerHobby = (Spinner)findViewById(R.id.spinnerHobby);
-            editSpinnerGender = (Spinner)findViewById(R.id.spinnerGender);
-            dateButton = (ImageButton)findViewById(R.id.btnDate);
-            showError = (TextView)findViewById(R.id.tvError);
+        editName = (EditText)findViewById(R.id.etName);
+        editDate = (EditText)findViewById(R.id.etDate);
+        editWeight = (EditText)findViewById(R.id.etWeight);
+        editSpinnerJob = (Spinner)findViewById(R.id.spinnerJob);
+        editSpinnerHobby = (Spinner)findViewById(R.id.spinnerHobby);
+        editSpinnerGender = (Spinner)findViewById(R.id.spinnerGender);
+        dateButton = (ImageButton)findViewById(R.id.btnDate);
+        showError = (TextView)findViewById(R.id.tvError);
 
-            mDateSetListener = new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                    month = month + 1;
-                    Log.d(TAG, "onDateSet: dd/mm/yyy: " + day + "/" + month + "/" + year);
-                    String date = day +"." + month + "." + year;
-                    editDate.setText(date);
-                }
-            };
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+                Log.d(TAG, "onDateSet: dd/mm/yyy: " + day + "/" + month + "/" + year);
+                String date = day +"." + month + "." + year;
+                editDate.setText(date);
+            }
+        };
     }
 
     /**
