@@ -19,6 +19,7 @@ public class DatePickerHelper {
         final int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
+        //Erstellt einen neuen Dialog, in welchem ein der User das Datum auswählen kann
         DatePickerDialog dialog = new DatePickerDialog(
                 act,
                 android.R.style.Theme_Material_Dialog,

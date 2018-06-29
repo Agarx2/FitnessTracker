@@ -4,8 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,8 +16,6 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.Calendar;
 
 /**
  * Liefert dem User alle Informationen, welche er zuvor über sich gespeicher hat.
@@ -88,8 +84,8 @@ public class ProfileActivity extends AppCompatActivity {
         }
         else {
             try {
+                //Versucht einen neuen DB eintrag einzufügen
                 Intent thisIntent = new Intent(this, MainPageActivity.class);
-                String a = editDate.getText().toString();
                 myDb.clearTable(myDb.getDb());
                 boolean isInserted = myDb.insertData(editName.getText().toString(), editDate.getText().toString(), editSpinnerGender.getSelectedItemPosition() + "",
                         Double.parseDouble(editWeight.getText().toString()), editSpinnerJob.getSelectedItemPosition() + "", editSpinnerHobby.getSelectedItemPosition() + "");
@@ -105,7 +101,7 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
-    /*
+    /**
      * Lädt die eingegebenen Informationen von der Datenbank und fügt sie in die Felder ein
      */
     private void loadUserInformations() {

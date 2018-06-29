@@ -44,7 +44,6 @@ Siehe auch: https://stackoverflow.com/questions/27609442/how-to-get-the-sha-1-fi
  */
 public class MainPageActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleApiClient mGoogleApiClient;
     private static final String TAG = MainPageActivity.class.getSimpleName();
     private GoogleMap mMap;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;

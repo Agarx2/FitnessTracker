@@ -83,6 +83,7 @@ public class RegisterActivity extends AppCompatActivity {
      * @return gibt die anzahl Kalorien als String zurück, auf 2 Dezimalstellen genau
      */
     public void signUp(View v){
+        //Prüft die Eingaben nach der Gültigkeit
         if((editName.getText().toString().equals("")) || (editDate.getText().toString().equals("")) || (editWeight.getText().toString().equals("")) || (editSpinnerJob.getSelectedItem().toString().equals("")) ||
             (editSpinnerHobby.getSelectedItem().toString().equals(""))){
 
@@ -90,8 +91,8 @@ public class RegisterActivity extends AppCompatActivity {
         }
         else{
             try {
+                //Versucht einen neuen DB eintrag einzufügen
                 Intent thisIntent = new Intent(this, MainPageActivity.class);
-                String a = editDate.getText().toString();
                 myDb.clearTable(myDb.getDb());
                 boolean isInserted = myDb.insertData(editName.getText().toString(), editDate.getText().toString(), editSpinnerGender.getSelectedItemPosition() + "",
                         Double.parseDouble(editWeight.getText().toString()), editSpinnerJob.getSelectedItemPosition() + "", editSpinnerHobby.getSelectedItemPosition() + "");

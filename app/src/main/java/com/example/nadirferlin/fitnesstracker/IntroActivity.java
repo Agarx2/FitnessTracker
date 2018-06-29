@@ -30,6 +30,7 @@ public class IntroActivity extends AppCompatActivity {
         myDb = new DatabaseHelper(this);
         Cursor cursor = myDb.getAllData();
 
+        //Falls der Inhalt der DB nicht 0 ist öffnet es die Hauptseite, sonst die Registrierung
         if(cursor.getCount() != 0){
             thisIntent = new Intent(this, MainPageActivity.class);
 
@@ -38,6 +39,7 @@ public class IntroActivity extends AppCompatActivity {
             thisIntent = new Intent(this, RegisterActivity.class);
         }
 
+        //Verzögert den nächsten Schritt um 2 Sekunden
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
