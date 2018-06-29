@@ -7,8 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebView;
 
-/*
+/**
  * Beginn der App welche 2 Sekunden lang gif zeigt
+ * @author Manuel Dutli
  */
 public class IntroActivity extends AppCompatActivity {
 
@@ -17,13 +18,15 @@ public class IntroActivity extends AppCompatActivity {
     private DatabaseHelper myDb;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState   ) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
+        //Verweist auf das gespeicherte GIF im Android Asset
         webView = (WebView) findViewById(R.id.webView);
         webView.loadUrl("file:///android_asset/sonic.html");
 
+        //Prüft ob schon Informationen in der DB stehen um die nächste Activity zu wählen
         myDb = new DatabaseHelper(this);
         Cursor cursor = myDb.getAllData();
 
