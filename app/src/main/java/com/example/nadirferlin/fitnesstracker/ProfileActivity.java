@@ -18,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * Liefert dem User alle Informationen, welche er zuvor über sich gespeicher hat.
+ * Liefert dem User alle Informationen, welche er zuvor über sich gespeichert hat.
  * @author Nadir Ferlin, Manuel Dutli
  */
 public class ProfileActivity extends AppCompatActivity {
@@ -90,6 +90,7 @@ public class ProfileActivity extends AppCompatActivity {
                 boolean isInserted = myDb.insertData(editName.getText().toString(), editDate.getText().toString(), editSpinnerGender.getSelectedItemPosition() + "",
                         Double.parseDouble(editWeight.getText().toString()), editSpinnerJob.getSelectedItemPosition() + "", editSpinnerHobby.getSelectedItemPosition() + "");
 
+                //Wenn der Eintrag erfolgreich war
                 if (isInserted == true) {
                     Toast.makeText(ProfileActivity.this, "Daten gespeichert", Toast.LENGTH_SHORT).show();
                     startActivity(thisIntent);

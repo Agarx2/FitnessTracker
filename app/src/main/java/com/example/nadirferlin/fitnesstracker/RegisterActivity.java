@@ -3,7 +3,6 @@ package com.example.nadirferlin.fitnesstracker;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,7 +19,7 @@ import android.widget.Toast;
 import java.util.Calendar;
 
 /**
- * Speichert die ersten eingaben des Benutzers ein
+ * Speichert die ersten Eingaben des Benutzers ein
  * @author Nadir Ferlin, Manuel Dutli
  */
 public class RegisterActivity extends AppCompatActivity {
@@ -97,6 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
                 boolean isInserted = myDb.insertData(editName.getText().toString(), editDate.getText().toString(), editSpinnerGender.getSelectedItemPosition() + "",
                         Double.parseDouble(editWeight.getText().toString()), editSpinnerJob.getSelectedItemPosition() + "", editSpinnerHobby.getSelectedItemPosition() + "");
 
+                //Wenn der Einrag erfolgreich war
                 if (isInserted == true) {
                     Toast.makeText(RegisterActivity.this, "Daten gespeichert", Toast.LENGTH_SHORT).show();
                     startActivity(thisIntent);

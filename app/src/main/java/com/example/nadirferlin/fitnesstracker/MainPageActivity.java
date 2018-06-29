@@ -14,13 +14,11 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -40,11 +38,11 @@ Siehe auch: https://stackoverflow.com/questions/27609442/how-to-get-the-sha-1-fi
  */
 
 /**
+ * Zuständig für die Map und das Tracking der Route
  * @author Nadir Ferlin
  */
 public class MainPageActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private static final String TAG = MainPageActivity.class.getSimpleName();
     private GoogleMap mMap;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private String provider;
@@ -135,6 +133,7 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
             lat1 = myLocation.getLatitude();
             lon1 = myLocation.getLongitude();
 
+            //Setzt Start/End Marker an aktueller Position
             mMap.addMarker(new MarkerOptions()
                     .position(userLocation)
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
@@ -146,6 +145,7 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
                 @Override
                 public void onLocationChanged(Location myLocation) {
 
+                    //Wenn der User nichts trackt soll nichts gespeichert werden
                     if (isRunning) {
                         // Getting latitude of the current location
                         double latitude = myLocation.getLatitude();
@@ -177,11 +177,13 @@ public class MainPageActivity extends FragmentActivity implements OnMapReadyCall
             });
         }
 
+        //Setze Kartentyp zu normal bzw. wie Google Maps
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
     }
 
     /**
      * Methode berechnet die anzahl Kalorien für die zurückgelegte Distanz
+     * Eine Faustregel wurde zur Ermittlung verwendet
      * @param steps - die anzahl Schritte für die Berechnung der Kalorien
      * @return gibt die anzahl Kalorien als String zurück, auf 2 Dezimalstellen genau
      */

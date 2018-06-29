@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.webkit.WebView;
 
 /**
- * Beginn der App welche 2 Sekunden lang gif zeigt
+ * Beginn der App welche 2 Sekunden lang ein Gif zeigt
  * @author Manuel Dutli
  */
 public class IntroActivity extends AppCompatActivity {
@@ -34,8 +34,7 @@ public class IntroActivity extends AppCompatActivity {
         if(cursor.getCount() != 0){
             thisIntent = new Intent(this, MainPageActivity.class);
 
-        }
-        else {
+        } else {
             thisIntent = new Intent(this, RegisterActivity.class);
         }
 
