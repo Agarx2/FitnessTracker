@@ -7,6 +7,9 @@ import android.view.View;
 
 import java.util.Calendar;
 
+/*
+ * Öffnet ein Dialog welcher ein ermöglicht aus einem Kalender sein Geburtsdatum auszuwählen
+ */
 public class DatePickerHelper {
 
     public static void openDatePicker(View v, Activity act, DatePickerDialog.OnDateSetListener listener){

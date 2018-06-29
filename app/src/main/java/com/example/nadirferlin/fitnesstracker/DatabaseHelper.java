@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.strictmode.SqliteObjectLeakedViolation;
 
+/*
+ * Legt eine SQLite Datenbank lokal auf dem Handy an
+ */
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME ="FitnessTracker.db";
     public static final String TABLE_NAME = "User_Table";
