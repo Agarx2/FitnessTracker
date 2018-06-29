@@ -19,8 +19,9 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-/*
+/**
  * Speichert die ersten eingaben des Benutzers ein
+ * @author Nadir Ferlin, Manuel Dutli
  */
 public class RegisterActivity extends AppCompatActivity {
 

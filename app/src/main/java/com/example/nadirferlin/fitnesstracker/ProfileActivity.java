@@ -21,6 +21,10 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+/**
+ * Liefert dem User alle Informationen, welche er zuvor über sich gespeicher hat.
+ * @author Nadir Ferlin, Manuel Dutli
+ */
 public class ProfileActivity extends AppCompatActivity {
 
     private DatabaseHelper myDb;
@@ -46,6 +50,7 @@ public class ProfileActivity extends AppCompatActivity {
         editSpinnerGender = (Spinner)findViewById(R.id.spinnerGender);
         saveButton = (Button)findViewById(R.id.btnSave);
         showError = (TextView)findViewById(R.id.tvError);
+
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
@@ -76,6 +81,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void saveData(){
+        //Prüft die Eingaben nach der Gültigkeit
         if((editName.getText().toString().equals("")) || (editDate.getText().toString().equals("")) || (editWeight.getText().toString().equals("")) || (editSpinnerJob.getSelectedItem().toString().equals("")) ||
                 (editSpinnerHobby.getSelectedItem().toString().equals(""))){
             showError.setVisibility(View.VISIBLE);
@@ -99,12 +105,16 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
+    /*
+     * Lädt die eingegebenen Informationen von der Datenbank und fügt sie in die Felder ein
+     */
     private void loadUserInformations() {
         Cursor res = myDb.getAllData();
+        //Prüft pb die DB leer ist, eig. nicht möglich, aber wenn ja kann der Benutzer einfach alles eingeben
         if(res.getCount() == 0){
             return;
         }
-        StringBuffer buffer = new StringBuffer();
+        //Geht alle Felder durch und schreibt sie in die
         while(res.moveToNext()){
             editName.setText(res.getString(1));
             editDate.setText(res.getString(2));
