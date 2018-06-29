@@ -106,18 +106,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void openDatePicker(View v){
-        Calendar cal = Calendar.getInstance();
-        final int year = cal.get(Calendar.YEAR);
-        final int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-
-        DatePickerDialog dialog = new DatePickerDialog(
-                RegisterActivity.this,
-                android.R.style.Theme_Material_Dialog,
-                mDateSetListener,
-                year, month, day);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.sonicBackgroundShadow)));
-
-        dialog.show();
+        DatePickerHelper.openDatePicker(v, this, mDateSetListener);
     }
 }
