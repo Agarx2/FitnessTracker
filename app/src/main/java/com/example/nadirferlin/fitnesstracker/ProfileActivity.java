@@ -84,6 +84,7 @@ public class ProfileActivity extends AppCompatActivity {
             try {
                 Intent thisIntent = new Intent(this, MainPageActivity.class);
                 String a = editDate.getText().toString();
+                myDb.clearTable(myDb.getDb());
                 boolean isInserted = myDb.insertData(editName.getText().toString(), editDate.getText().toString(), editSpinnerGender.getSelectedItemPosition() + "",
                         Double.parseDouble(editWeight.getText().toString()), editSpinnerJob.getSelectedItemPosition() + "", editSpinnerHobby.getSelectedItemPosition() + "");
 
